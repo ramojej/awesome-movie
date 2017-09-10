@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="assets/js/jquery-3.2.1.min.js"></script>
     <script src="assets/js/jquery-ui.min.js"></script>
@@ -9,5 +10,27 @@
 </head>
 <body>
     
+    <div class="movies_header">
+        <div class="logo">AwesomeMovie.com</div>
+        <div class="movies_filters">
+            <div class="filter open">
+                <span class="fa fa-arrow-circle-o-down"></span>
+                <span class="btn_title">Filter by</span>
+            </div>
+            <div class="filter_container">
+                <label>Category</label>
+                <select id="categories">
+                    <option selected value="all">All Categories</option>
+                </select>
+
+                <label>Directors</label>
+                <select id="directors">
+                    <option selected value="all">All Directors</option>
+                </select>
+            </div>
+
+        </div>
+    </div>
+
 </body>
 </html> 
