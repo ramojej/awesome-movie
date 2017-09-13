@@ -12,6 +12,7 @@ awesomeMovie.loadAssets = function() {
 awesomeMovie.init = function() {
     awesomeMovie.filterSlider();
     awesomeMovie.getTypes();
+    awesomeMovie.getDirectors();
 };
 
 
@@ -42,6 +43,20 @@ awesomeMovie.getTypes = function() {
             $('#categories').append('<option value="'+ typeValue +'">'+ typeValue +'</option>');
         }
     })
+
+};
+
+awesomeMovie.getDirectors = function() {
+    var db = awesomeMovie.dataBase;
+    var directors = [];
+    
+        $.each(db, function(index, elem) {
+            if($.inArray(db[index].director, directors)) {
+                var directorValue = db[index].director;
+                directors.push(directorValue);
+                $('#directors').append('<option value="'+ directorValue +'">'+ directorValue +'</option>');
+            }
+        })    
 
 };
 
