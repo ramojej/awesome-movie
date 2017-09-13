@@ -1,8 +1,19 @@
 var awesomeMovie = {};
 
+awesomeMovie.dataBase = [];
+
+awesomeMovie.loadAssets = function() {
+    $.getJSON('../app/assets/db/movies.json', function(data) {
+        awesomeMovie.dataBase = data;
+        awesomeMovie.init();
+    });
+};
+
 awesomeMovie.init = function() {
     awesomeMovie.filterSlider();
+    awesomeMovie.getTypes();
 };
+
 
 awesomeMovie.filterSlider = function() {
 
@@ -21,4 +32,17 @@ awesomeMovie.filterSlider = function() {
     });
 };
 
-awesomeMovie.init();
+awesomeMovie.getTypes = function() {
+    var types = [];
+
+    $.each(awesomeMovie.dataBase, function(index, elem) {
+        if($.inArray(awesomeMovie.dataBase[index].type, types)) {
+            var typeValue = awesomeMovie.dataBase[index].type;
+            types.push(typeValue);
+            $('#categories').append('<option value="'+ typeValue +'">'+ typeValue +'</option>');
+        }
+    })
+
+};
+
+awesomeMovie.loadAssets();
