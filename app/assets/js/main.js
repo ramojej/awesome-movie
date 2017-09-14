@@ -13,6 +13,7 @@ awesomeMovie.init = function() {
     awesomeMovie.filterSlider();
     awesomeMovie.getTypes();
     awesomeMovie.getDirectors();
+    awesomeMovie.generateMarkup();
 };
 
 
@@ -59,5 +60,39 @@ awesomeMovie.getDirectors = function() {
         })    
 
 };
+
+awesomeMovie.generateMarkup = function() {
+    var template = '';
+
+    $.each(awesomeMovie.dataBase, function(index) {
+
+        var db = awesomeMovie.dataBase;
+
+        template += '<div class="movie_item">';
+        template +=    '<div class="header">';
+        template +=        '<div class="left">';
+        template +=            '<img src="assets/images/movies/'+ db[index].img +'" alt="">';
+        template +=        '</div>';
+        template +=        '<div class="right">';
+        template +=            '<h3>'+ db[index].title +'</h3>';
+        template +=            '<div class="node">';
+        template +=                '<span>Year:</span> '+ db[index].year +'';
+        template +=            '</div>';
+        template +=            '<div class="node">';
+        template +=                '<span>Director:</span> '+ db[index].director +'';
+        template +=            '</div>';
+        template +=            '<div class="node">';
+        template +=                '<span>Type:</span> '+ db[index].type +'';
+        template +=            '</div>';
+        template +=            '<div class="show_desc">See description</div>';
+        template +=        '</div>';
+        template +=    '</div>';
+        template +=    '<div class="description"><strong>Description:</strong> '+ db[index].desc +'';
+        template +=    '</div>';
+        template += '</div>';        
+    });
+
+    $('.movies_content').append(template);
+}
 
 awesomeMovie.loadAssets();
