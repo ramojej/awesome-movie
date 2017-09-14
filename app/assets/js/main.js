@@ -93,6 +93,29 @@ awesomeMovie.generateMarkup = function() {
     });
 
     $('.movies_content').append(template);
+    awesomeMovie.showDescription();
 }
+
+awesomeMovie.showDescription = function() {
+
+    $('.show_desc').on('click', function() {
+
+        var $this = $(this);
+        var parent = $(this).parents().eq(2);
+        var element = parent.find('.description');
+
+        element.slideToggle(300, function() {
+
+            if($this.hasClass('active')) {
+                $this.text('See description').removeClass('active');
+            } else {
+                $this.text('Hide description').addClass('active');
+            }
+
+        });
+
+    });
+
+};
 
 awesomeMovie.loadAssets();
